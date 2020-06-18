@@ -1,6 +1,7 @@
 package com.example.tictactoykotlin
 
 import android.annotation.SuppressLint
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     var player2 = ArrayList<Int>()
     var activePlayer = 1
     var winner = -1
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -118,10 +120,14 @@ class MainActivity : AppCompatActivity() {
             winner = 2
         }
         if(winner != -1 ){
-            if(winner ==1)
+            if(winner ==1) {
                 Toast.makeText(applicationContext, "player 1 win ", Toast.LENGTH_LONG).show()
-            else
+            }
+            else{
                 Toast.makeText(applicationContext, "player 2 win ", Toast.LENGTH_LONG).show()
+            }
+            var mediaPlayer:MediaPlayer ?= MediaPlayer.create(applicationContext , R.raw.clapping)
+             mediaPlayer?.start()
         } // end if
     } // end checkWinner()
 
